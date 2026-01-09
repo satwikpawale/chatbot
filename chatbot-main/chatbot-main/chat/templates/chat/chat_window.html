@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Voice Chatbot</title>
+    {# Link to the external CSS file #}
+    {# Ensure this path is correct relative to your static file serving setup #}
+    <link rel="stylesheet" href="/static/chat/chat.css">
+</head>
+<body>
+
+    <div class="chat-container">
+        <h1>Chat with our AI</h1>
+
+        <div class="content-area">
+            <div class="sidebar">
+                <div id="initial-suggestions">
+                    <h3>Product Suggestions</h3>
+                    <ul id="suggestions-list" class="suggestions-list">
+                        </ul>
+                </div>
+
+                <div id="dynamic-product-suggestions">
+                    <h3>You might also like:</h3>
+                    <ul id="dynamic-suggestions-list" class="dynamic-suggestions-list">
+                        </ul>
+                </div>
+            </div>
+
+            <div class="main-chat-area">
+                 <div id="chat-messages">
+                    </div>
+
+                 <div class="input-area">
+                    <div id="voiceStatus">Idle</div> {# Status indicator moved above inputs #}
+                    <input type="text" id="user-input" placeholder="Type your message here...">
+                    <div class="input-buttons">
+                        <button id="send-button">Send</button>
+                        <button id="voiceToggleBtn">Start Voice Chat</button>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    {# Optional: An audio element can be used for simpler playback #}
+    <audio id="botAudioPlayback" style="display: none;"></audio>
+
+    <script>
+        // --- IMPORTANT: Path to the AudioWorklet processor file ---
+        // This path MUST be correct and the file MUST be served by your web server.
+        // If you are using Django, place audio-processor.js in a directory served by staticfiles
+        // and ensure this URL matches.
+        // Based on your file location: C:\...\chat\static\chat\audio-processor.js
+        // The URL will likely be /static/chat/audio-processor.js in a Django project.
+        const audioProcessorUrl = '/static/chat/audio-processor.js'; // Example path
+    </script>
+    {# Link to the main chat application JavaScript file #}
+    {# Ensure this path is correct relative to your static file serving setup #}
+    <script src="/static/chat/chat.js"></script>
+
+</body>
+</html>
